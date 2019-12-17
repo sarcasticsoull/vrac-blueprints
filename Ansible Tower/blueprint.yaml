@@ -1,14 +1,14 @@
 formatVersion: 1
-name: "Ansible Tower Extensibility"
-version: 1
-inputs: {}
+inputs:
+  name:
+    type: string
 resources:
-  AnsibleTower:
-    type: Cloud.Machine
+  Cloud_AWS_EC2_Instance_1:
+    type: Cloud.AWS.EC2.Instance
     properties:
-      image: ubuntu
-      flavor: small
-      enable_tower: true
-      sshKeyName: cmbu-tower
+      image: ubuntu-16
+      flavor: micro
+      newName: '${input.name}'
       constraints:
-        - tag: 'env:aws'
+        - tag: 'cloud:aws'
+        - tag: 'env:awstest'
